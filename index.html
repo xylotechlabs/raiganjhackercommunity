@@ -1,1 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Dark Web</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: white;
+      color: black;
+      margin: 20px;
+    }
+    .hidden { display: none; }
+    .button {
+      background: black;
+      color: white;
+      padding: 8px 15px;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .link {
+      display: block;
+      margin: 8px 0;
+      cursor: pointer;
+      text-decoration: underline;
+      color: blue;
+    }
+    h1, h2 { margin-bottom: 10px; }
+    input, textarea {
+      padding: 5px;
+      margin: 5px 0;
+      width: 250px;
+    }
+  </style>
+</head>
+<body>
 
+<div id="loginScreen">
+  <h2>Login to Dark Web</h2>
+  <input type="text" placeholder="Username"><br>
+  <input type="password" placeholder="Password"><br>
+  <button class="button" onclick="login()">Login</button>
+</div>
+
+<div id="mainPage" class="hidden">
+  <h1>Dark Web</h1>
+  <span class="link" onclick="showAlphaBay()">AlphaBay</span>
+  <span class="link" onclick="showWallet()">BitWallet</span>
+  <span class="link" onclick="showKidnapper()">Hire a Kidnapper</span>
+</div>
+
+<div id="alphaBayPage" class="hidden">
+  <h2>AlphaBay</h2>
+  <span class="link" onclick="showProduct('IP Address', '12.543 BTC')">IP Address</span>
+  <span class="link" onclick="showProduct('Ham Radio', '4.230 BTC')">Ham Radio</span>
+  <span class="link" onclick="showProduct('PS6', '42.000 BTC')">PS6</span>
+  <span class="link" onclick="showProduct('Nuclear Potato', '99.999 BTC')">Nuclear Potato</span>
+  <br>
+  <button class="button" onclick="goHome()">Back</button>
+</div>
+
+<div id="productPage" class="hidden">
+  <h2 id="productName"></h2>
+  <p>Price: <span id="productPrice"></span></p>
+  <p>Shipping Address: Raiganj, West Bengal, India</p>
+  <button class="button" onclick="confirmOrder()">Pay & Confirm Order</button>
+</div>
+
+<div id="walletPage" class="hidden">
+  <h2>BitWallet</h2>
+  <p>Bitcoin in your wallet: 67,792 BTC</p>
+  <button class="button" onclick="goHome()">Back</button>
+</div>
+
+<div id="kidnapperPage" class="hidden">
+  <h2>Hire a Kidnapper</h2>
+  <input type="text" placeholder="Address"><br>
+  <input type="text" placeholder="Time"><br>
+  <input type="text" placeholder="Phone Number"><br>
+  <button class="button" onclick="hireKidnapper()">Hire (3,000 BTC)</button>
+</div>
+
+<script>
+function hideAll() {
+  document.querySelectorAll('div').forEach(div => div.classList.add('hidden'));
+}
+
+function login() {
+  hideAll();
+  document.getElementById('mainPage').classList.remove('hidden');
+}
+
+function goHome() {
+  hideAll();
+  document.getElementById('mainPage').classList.remove('hidden');
+}
+
+function showAlphaBay() {
+  hideAll();
+  document.getElementById('alphaBayPage').classList.remove('hidden');
+}
+
+function showWallet() {
+  hideAll();
+  document.getElementById('walletPage').classList.remove('hidden');
+}
+
+function showProduct(name, price) {
+  hideAll();
+  document.getElementById('productName').innerText = name;
+  document.getElementById('productPrice').innerText = price;
+  document.getElementById('productPage').classList.remove('hidden');
+}
+
+function confirmOrder() {
+  alert("Paid and Order Confirmed!");
+  goHome();
+}
+
+function showKidnapper() {
+  hideAll();
+  document.getElementById('kidnapperPage').classList.remove('hidden');
+}
+
+function hireKidnapper() {
+  alert("Kidnapper hired!");
+  goHome();
+}
+</script>
+
+</body>
+</html>
